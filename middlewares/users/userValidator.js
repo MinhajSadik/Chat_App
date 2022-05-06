@@ -63,7 +63,7 @@ const addUserValidationHandler = function (req, res, next) {
       unlink(
         path.join(__dirname, `/../public/uploads/avatars/${filename}`),
         (err) => {
-          if (err) console.log(err);
+          if (err) console.error(err);
         }
       );
     }
