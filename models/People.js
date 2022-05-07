@@ -21,7 +21,7 @@ const peopleSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    avater: {
+    avatar: {
       type: String,
     },
     role: {
@@ -30,7 +30,9 @@ const peopleSchema = mongoose.Schema(
       default: "user",
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 const People = mongoose.model("People", peopleSchema);
