@@ -3,7 +3,9 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
+const http = require("http");
 const cookieParser = require("cookie-parser");
+const moment = require("moment");
 
 //internal imports
 const {
@@ -15,7 +17,15 @@ const usersRouter = require("./routers/usersRouter");
 const inboxRouter = require("./routers/inboxRouter");
 
 const app = express();
+const server = http.createServer(app);
 dotenv.config();
+
+// socket creation
+const io = require("socket.io")(server);
+global.io = io;
+
+//set comment as app locals
+app.locals.moment = moment;
 
 //database connection
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
